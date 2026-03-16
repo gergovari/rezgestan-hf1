@@ -1,0 +1,21 @@
+\section{Logaritmikus dekrementum}
+
+A 2. ábráról leolvasott értékek alapján a logaritmikus dekrementum és a becsült paraméterek meghatározása a legtisztábban az első két pozitív csúcs vizsgálatával végezhető el, mivel ezek jól leolvasható rácsvonalakra esnek.
+
+Leolvasott értékek $n=\nper$ periódushoz:
+\begin{align*}
+    t_0 & = \siunit{\tzero}{s} & x_0 & = \xzero \\
+    t_1 & = \siunit{\tone}{s}  & x_1 & = \xone
+\end{align*}
+
+A becsült paraméterek számítása a logaritmikus dekrementum ($\hat{\delta}$) segítségével:
+
+\begin{align}
+    \hat{\delta}   & = \frac{1}{n} \ln\left(\frac{x_0}{x_1}\right) = \frac{1}{\nper} \ln\left(\frac{\xzero}{\xone}\right) \approx \deltaEst          \\[1ex]
+    \hat{\zeta}    & = \frac{\hat{\delta}}{\sqrt{4\pi^2 + \hat{\delta}^2}} = \frac{\deltaEst}{\sqrt{4\pi^2 + \deltaEst^2}} \approx \zetaEst          \\[1ex]
+    \hat{T}_d      & = \frac{t_1 - t_0}{n} = \frac{\tone - \tzero}{\nper} = \siunit{\TdEst}{s}                                                       \\[1ex]
+    \hat{\omega}_d & = \frac{2\pi}{\hat{T}_d} = \frac{2\pi}{\TdEst} \approx \siunit{\omegadEst}{rad/s}                                               \\[1ex]
+    \hat{\omega}_n & = \frac{\hat{\omega}_d}{\sqrt{1 - \hat{\zeta}^2}} = \frac{\omegadEst}{\sqrt{1 - \zetaEst^2}} \approx \siunit{\omeganEst}{rad/s}
+\end{align}
+
+A számítások elvégzése után látható, hogy a grafikonról becsült $\hat{\omega}_n$ és $\hat{\zeta}$ értékek nagyságrendileg megegyeznek a 3. feladatrészben kiszámított értékekkel. Ezzel a számított eredményeinket sikeresen igazoltuk.

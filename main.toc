@@ -9,3 +9,4 @@
 \contentsline {subsection}{\numberline {2.6}Redukált tömeg}{3}{}%
 \contentsline {subsection}{\numberline {2.7}Összegzés}{4}{}%
 \contentsline {section}{\numberline {3}Lengőrendszer tulajdonságai}{4}{}%
+\contentsline {section}{\numberline {4}Logaritmikus dekrementum}{5}{}%
