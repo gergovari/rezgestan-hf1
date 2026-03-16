@@ -10,3 +10,9 @@
 \contentsline {subsection}{\numberline {2.7}Összegzés}{4}{}%
 \contentsline {section}{\numberline {3}Lengőrendszer tulajdonságai}{4}{}%
 \contentsline {section}{\numberline {4}Logaritmikus dekrementum}{5}{}%
+\contentsline {section}{\numberline {5}Ütközés és kezdeti feltételek}{6}{}%
+\contentsline {subsection}{\numberline {5.1}Sebességek az ütközés előtt}{7}{}%
+\contentsline {subsection}{\numberline {5.2}Redukált tömegek számítása}{7}{}%
+\contentsline {subsection}{\numberline {5.3}Közös ütközés utáni sebesség (tökéletesen rugalmatlan eset)}{7}{}%
+\contentsline {subsection}{\numberline {5.4}Az ütközés utáni sebessége a lengőkarnak (1) a D pontban}{7}{}%
+\contentsline {subsection}{\numberline {5.5}A rendszer kezdeti feltételei}{7}{}%

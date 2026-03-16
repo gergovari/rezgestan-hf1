@@ -349,3 +349,106 @@
         \caption{Statikus SZTÁ}
     \end{figure}
 }
+
+\newcommand{\collisiondiagram}{
+    \begin{figure}[hbt!]
+        \centering
+        \begin{tikzpicture}[scale=0.9] % Added slight overall scale reduction
+            \coords
+            % Reduced pendulum length from 3.5 to 2.5
+            \pgfmathsetmacro{\pendlen}{2.5}
+
+            \coordinate (P) at ($(E) + ({\pendlen*sin(30)}, {\pendlen*cos(30)})$);
+
+            \draw[-Stealth, thin] (A) -- ($(A) + (0, 1.0)$) node[right] {$y$}; % Shortened axes
+            \draw[-Stealth, thin] (A) -- ($(A) + (1.0, 0)$) node[above] {$x$};
+            \node at ($(A) + (315:0.5)$) {$\theta_A$};
+
+            \node[above left] at ($(A)+(-1.2,0)$) {$m_1$};
+            \node[left] at ($(A)+(0,-1.2)$) {$m_2$};
+
+            \draw[line cap=round, line join=round, line width=\beamwidth, blue!70!black] ({-\Lthree - \Lfour}, 0) -- (A) -- (E);
+
+            \draw[-Stealth, thin] (P) -- ($(P) + (1.2, 0)$) node[above] {$x$};
+            \draw[-Stealth, thin] (P) -- ($(P) + (0, 1.2)$) node[right] {$y$};
+            \node at ($(P) + (205:0.4)$) {$\theta_2$};
+
+            \draw[cyan!70!black, line width=1.2pt] (P) -- ($(P) + (\pendlen, 0)$);
+
+            \draw[thick] ($(P)+(-0.4, 0.4)$) -- ($(P)+(0.4, 0.4)$);
+            \fill[pattern=north east lines] ($(P)+(-0.4, 0.4)$) rectangle ($(P)+(0.4, 0.6)$);
+            \draw[thick] ($(P)+(0, 0)$) -- ($(P)+(-0.3, 0.4)$) -- ($(P)+(0.3, 0.4)$) -- cycle;
+            \filldraw[fill=white, draw=black, thick] (P) circle (0.1);
+
+            \draw[dashed, cyan!60!black] ($(P) + (\pendlen, 0)$) arc (0:-120:\pendlen);
+            \fill[cyan!60!black] ($(P) + (\pendlen, 0)$) circle (0.2); % Scaled down mass
+
+            \draw[thin] ($(P) + (0.9, 0)$) arc (0:-120:0.9);
+            \node at ($(P) + (-35:1.3)$) {$120^\circ$};
+
+            \draw[thick, line width=1.2pt] (P) -- (E) node[midway, right=0.1cm] {$l=l_3$};
+
+            \fill[black] (E) circle (0.2);
+            \node[above left=0.1cm] at (E) {D};
+            \node[left=0.4cm] at (E) {T};
+            \node[below left=0.1cm] at (E) {m};
+            \node[below right=0.2cm] at (E) {(2)};
+
+            \draw[-Stealth, orange!90!black, thick] (E) -- ++(1.2, 0) node[right, black] {\tiny Ütközési normális};
+            \draw[thick, violet!80!black] (E) -- ++(2.0, -1.2) node[right] {$C_1$};
+
+        \end{tikzpicture}
+        \caption{Ütközés}
+    \end{figure}
+}
+
+\newcommand{\pendulumszta}{
+    \begin{figure}[hbt!]
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            % Reduced pendulum length from 4.5 to 3.0
+            \pgfmathsetmacro{\pendlen}{3.5}
+            \coordinate (P) at (0,0);
+            \coordinate (E) at ({-\pendlen*sin(30)}, {-\pendlen*cos(30)});
+
+            \draw[-Stealth, thin] (P) -- ($(P) + (1.5, 0)$) node[above] {$x$};
+            \draw[-Stealth, thin] (P) -- ($(P) + (0, 1.2)$) node[right] {$y$};
+            \draw[dashed, thin] (P) -- (0, -\pendlen);
+            \node at ($(P) + (205:0.4)$) {$\theta_2$};
+
+            \draw[cyan!70!black, line width=1.5pt] (P) -- ($(P) + (\pendlen, 0)$);
+
+            \draw[thick] ($(P)+(-0.5, 0.4)$) -- ($(P)+(0.5, 0.4)$);
+            \fill[pattern=north east lines] ($(P)+(-0.5, 0.4)$) rectangle ($(P)+(0.5, 0.6)$);
+            \draw[thick] ($(P)+(0, 0)$) -- ($(P)+(-0.3, 0.4)$) -- ($(P)+(0.3, 0.4)$) -- cycle;
+            \filldraw[fill=white, draw=black, thick] (P) circle (0.12);
+
+            \draw[dashed, cyan!60!black] ($(P) + (\pendlen, 0)$) arc (0:-120:\pendlen);
+            \fill[cyan!60!black] ($(P) + (\pendlen, 0)$) circle (0.25);
+
+            \draw[thin] ($(P) + (0, -1.2)$) arc (-90:-120:1.2);
+            \node at (-105:1.5) {$30^\circ$};
+
+            \draw[thick, line width=1.5pt] (P) -- (E) node[midway, left] {$l=l_3$};
+
+            \draw ($(P) + (1.0, 0)$) -- ($(P) + (2.2, 0)$);
+            \draw ($(P) + (1.0, {-\pendlen*cos(30)})$) -- ($(P) + (2.2, {-\pendlen*cos(30)})$);
+            \draw[|<->|, thin] ($(P) + (2.0, 0)$) -- ($(P) + (2.0, {-\pendlen*cos(30)})$) node[midway, right] {\small $l_3 \text{c}30^\circ$};
+
+            \fill[black] (E) circle (0.25);
+            \node[above left=0.1cm] at (E) {D};
+
+            \draw[-Stealth, orange!90!black, thick] (E) -- ++(1.2, 0);
+
+            \coordinate (C_tip) at ($(E) + (2.0, -1.2)$);
+            \draw[thick, violet!80!black] (E) -- (C_tip) node[right] {$C_1$};
+            \draw[-Stealth, thick] (E) -- ++(0, -1.2) node[left] {$C_{2t}$};
+            \draw[-Stealth, thick] ($(E) + (0, -1.2)$) -- ++(2.0, 0) node[below] {$C_{2N}$};
+
+            \draw[thin] ($(C_tip) + (-0.6, 0)$) arc (180:150:0.6);
+            \node at ($(C_tip) + (-0.9, 0.2)$) {$30^\circ$};
+
+        \end{tikzpicture}
+        \caption{Lengő SZTÁ}
+    \end{figure}
+}
