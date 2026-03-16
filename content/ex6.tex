@@ -1,0 +1,67 @@
+\section{Gerjesztett lengőrendszer mozgástörvénye}
+
+\subsection{Mozgás törvény meghatározása}
+A mozgásegyenlet sztenderd alakja tiszta nyomatékgerjesztés ($M(t) = M_0 \sin(\omega t)$) esetén:
+\begin{equation}
+    \ddot{\varphi} + 2\zeta\omega_n\dot{\varphi} + \omega_n^2\varphi = f_0\omega_n^2 \sin(\omega t)
+\end{equation}
+
+Ebből a teljes mozgástörvény (homogén + partikuláris megoldás):
+\begin{equation}
+    \varphi(t) = e^{-\zeta\omega_n t} \left( C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t) \right) + \Phi \sin(\omega t - \vartheta)
+\end{equation}
+
+Ahol a számított paraméterek (a 3. feladatrészből kapott $\omega_n$ és $\zeta$ felhasználásával):
+\begin{align}
+    \omega_d   & = \omega_n \sqrt{1 - \zeta^2} \approx \siunit{\omegadVal}{rad/s}                                                                      \\[1ex]
+    f_0        & = \frac{M_0}{\theta_A \cdot \omega_n^2} \approx \siunit{\fzeroVal}{rad}                                                               \\[1ex]
+    \lambda    & = \frac{\omega}{\omega_n} \approx \lamVal                                                                                             \\[1ex]
+    N(\lambda) & = \frac{1}{\sqrt{(1-\lambda^2)^2 + 4\zeta^2\lambda^2}} \approx \NlamVal                                                               \\[1ex]
+    \Phi       & = f_0 \cdot N(\lambda) \approx \siunit{\PhiAmp}{rad}                                                                                  \\[1ex]
+    \vartheta  & = \arctan\left(\frac{2\zeta\lambda}{1-\lambda^2}\right) \approx \siunit{\varthetaVal}{rad} \quad \text{(A síknegyed helyesbítésével)}
+\end{align}
+
+\subsection{Kezdeti feltételek illesztése}
+A peremfeltételek behelyettesítése az 5. feladatrészből ($\varphi(0) = 0$ és $\dot{\varphi}(0) = \phiDotZero$ rad/s):
+\begin{align}
+    \varphi(0) & = C_1 - \Phi \sin(\vartheta) = 0 \implies C_1 = \Phi \sin(\vartheta) \approx \siunit{\Cone}{rad}
+\end{align}
+
+A sebességfüggvény deriválásával és behelyettesítésével:
+\begin{align}
+    \dot{\varphi}(0) & = -\zeta\omega_n C_1 + \omega_d C_2 + \Phi\omega \cos(-\vartheta) = \phiDotZero                                  \\[1ex]
+    C_2              & = \frac{\dot{\varphi}(0) + \zeta\omega_n C_1 - \Phi\omega \cos(\vartheta)}{\omega_d} \approx \siunit{\Ctwo}{rad}
+\end{align}
+
+\subsection{Behelyettesítve a mozgástörvénybe:}
+\begin{equation}
+    \varphi(t) = e^{-\zetaVal \cdot \omeganVal \cdot t} \left( \Cone \cos(\omegadVal t) + \Ctwo \sin(\omegadVal t) \right) + \PhiAmp \sin(\omegaEx t - \varthetaVal)
+\end{equation}
+
+\subsection{A mozgásegyenlet grafikonon ábrázolva}
+\begin{figure}[hbt!]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    width=14cm, height=8cm,
+                    axis lines=middle,
+                    xmin=0, xmax=5,
+                    ymin=-0.15, ymax=0.15,
+                    xlabel={$t$ [s]},
+                    ylabel={$\varphi(t)$ [rad]},
+                    x label style={at={(axis description cs:1,0.5)},anchor=west},
+                    y label style={at={(axis description cs:0,1)},anchor=south},
+                    samples=300,
+                    smooth,
+                    grid=both,
+                    major grid style={line width=0.5pt,draw=gray!50},
+                    minor grid style={line width=0.2pt,draw=gray!20},
+                    minor tick num=4
+                ]
+                \addplot[red, thick, domain=0:5]
+                {exp(-\zetaVal*\omeganVal*x) * (\Cone*cos(deg(\omegadVal*x)) + \Ctwo*sin(deg(\omegadVal*x))) + \PhiAmp*sin(deg(\omegaEx*x - \varthetaVal))};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    \caption{A rendszer gerjesztett rezgése az ütközés után}
+\end{figure}
