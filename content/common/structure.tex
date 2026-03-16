@@ -162,15 +162,109 @@
 % 7. MAIN ASSEMBLY MACRO
 % --------------------------------------------------
 \newcommand{\structurediagram}{
-    \centering
-    \begin{tikzpicture}
-        \coords
-        \supports
-        \springsdampers
-        \excitations
-        \beams
-        \spring
-        \dimensions
-        \convention
-    \end{tikzpicture}
+    \begin{center}
+        \begin{tikzpicture}
+            \coords
+            \supports
+            \springsdampers
+            \excitations
+            \beams
+            \spring
+            \dimensions
+            \convention
+        \end{tikzpicture}
+    \end{center}
+}
+
+% --------------------------------------------------
+% 8. FREE-BODY DIAGRAM (SZTA) MACRO
+% --------------------------------------------------
+\newcommand{\forcewidth}{1.5pt}
+\newcommand{\forcecolor}{teal}
+
+\newcommand{\szta}{
+    \begin{center}
+        \begin{tikzpicture}
+            \coords
+
+            % Rotation angle (CCW to match C going down)
+            \def\ang{10}
+
+            % Horizontal reference line (thin solid line) spanning left and right
+            \draw[thin] ($(A) + (-12, 0)$) -- ($(A) + (2, 0)$);
+
+            % Coordinate system x,y at A
+            \draw[-Stealth, thin] (A) -- ($(A) + (2, 0)$) node[above] {$x$};
+            \draw[-Stealth, thin] (A) -- ($(A) + (0, 2)$) node[right] {$y$};
+            \node at ($(A) + (0.4, 0.4)$) {$\theta_A$};
+
+            % Draw rotated rigid body
+            \begin{scope}[rotate around={\ang:(A)}]
+                % Extended line for angles to align with rotated beam
+                \draw[thin] (A) -- ++(-12, 0);
+
+                % Main L-beam
+                \draw[line cap=round, line join=round, line width=\beamwidth, \beamcolor] ({-\Lthree - \Lfour}, 0) -- (0,0) -- (0, -\Lone);
+
+                % Defined rotated coordinates locally
+                \coordinate (A') at (0,0);
+                \coordinate (B') at (-\Lthree, 0);
+                \coordinate (C') at ({-\Lthree - \Lfour}, 0);
+                \coordinate (D') at (0, -\Lone);
+                \coordinate (G1_pos) at ($(A')!0.5!(C')$); % Exact center of horizontal rod
+                \coordinate (G2_pos) at ($(A')!0.5!(D')$); % Exact center of vertical rod
+
+                % Red visible dots for the coordinates
+                \fill[red] (A') circle (0.1);
+                \fill[red] (B') circle (0.1);
+                \fill[red] (C') circle (0.1);
+                \fill[red] (D') circle (0.1);
+                \fill[red] (G1_pos) circle (0.1);
+                \fill[red] (G2_pos) circle (0.1);
+            \end{scope}
+
+            % Structural Labels (adjusted to avoid overlap)
+            \node[below left=0.2cm] at (G1_pos) {$m_1$};
+            \node[right=0.2cm] at ($(A')!0.7!(D')$) {$m_2$};
+
+            \node[above left=0.1cm] at (C') {C};
+            \node[above right=0.1cm] at (B') {B};
+            \node[below right=0.1cm] at (A') {A};
+            \node[right=0.2cm] at (D') {D};
+
+            % Kinematics / Angles (left of C)
+            \draw[-Stealth, thick] ($(A) + (180:9.8)$) arc (180:{180+\ang}:9.8);
+            \node[below] at ($(A) + ({180+\ang}:9.8)$) {$\varphi$};
+
+            \draw[-Stealth, thick] ($(A) + (180:10.6)$) arc (180:{180+\ang}:10.6);
+            \node[below] at ($(A) + ({180+\ang}:10.6)$) {$\dot{\varphi}$};
+
+            \draw[-Stealth, thick] ($(A) + (180:11.4)$) arc (180:{180+\ang}:11.4);
+            \node[below] at ($(A) + ({180+\ang}:11.4)$) {$\ddot{\varphi}$};
+
+            % Forces vectors (Placed at tails to avoid crowding, G forces exactly at center)
+
+            % Fc at C' (points UP)
+            \draw[-Stealth, blue, line width=\forcewidth] (C') -- ++(0, 1.8) node[right] {$F_c$};
+
+            % G1 at G1_pos (points DOWN)
+            \draw[-Stealth, green!60!black, line width=\forcewidth] (G1_pos) -- ++(0, -2.5) node[left] {$G_1$};
+
+            % F(t) at B' (points DOWN)
+            \draw[-Stealth, blue, line width=\forcewidth] ($(B') + (0, 1.8)$) node[above] {$F(t)$} -- (B');
+
+            % Fk1 at B' (points UP, placed at left bottom)
+            \draw[-Stealth, blue, line width=\forcewidth] ($(B') + (0, -1.8)$) node[below left] {$F_{k1}$} -- (B');
+
+            % Fk2 at G2_pos (points LEFT)
+            \draw[-Stealth, blue, line width=\forcewidth] (G2_pos) -- ++(-1.4, 0) node[midway, above] {$F_{k2}$};
+
+            % G2 at G2_pos (points DOWN)
+            \draw[-Stealth, green!60!black, line width=\forcewidth] (G2_pos) -- ++(0, -2.5) node[right] {$G_2$};
+
+            % Mkt at A (CCW)
+            \draw[-Stealth, red, line width=\forcewidth] ($(A') + (-50:0.8)$) arc (-50:130:0.8) node[pos=0.05, right=0.1cm] {$M_{kt}$};
+
+        \end{tikzpicture}
+    \end{center}
 }
