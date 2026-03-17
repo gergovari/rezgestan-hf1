@@ -19,5 +19,5 @@
 \contentsline {section}{\numberline {6}Gerjesztett lengőrendszer mozgástörvénye}{9}{}%
 \contentsline {subsection}{\numberline {6.1}Mozgás törvény meghatározása}{9}{}%
 \contentsline {subsection}{\numberline {6.2}Kezdeti feltételek illesztése}{9}{}%
-\contentsline {subsection}{\numberline {6.3}Behelyettesítve a mozgástörvénybe:}{9}{}%
-\contentsline {subsection}{\numberline {6.4}A mozgásegyenlet grafikonon ábrázolva}{9}{}%
+\contentsline {subsection}{\numberline {6.3}Behelyettesítve a mozgástörvénybe:}{10}{}%
+\contentsline {subsection}{\numberline {6.4}A mozgásegyenlet grafikonon ábrázolva}{10}{}%
