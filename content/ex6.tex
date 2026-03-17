@@ -1,7 +1,7 @@
 \section{Gerjesztett lengőrendszer mozgástörvénye}
 
-\subsection{Mozgás törvény meghatározása}
-A mozgásegyenlet sztenderd alakja tiszta nyomatékgerjesztés ($M(t) = M_0 \sin(\omega t)$) esetén:
+\subsection{Mozgástörvény}
+A mozgásegyenlet alakja tiszta nyomatékgerjesztés ($M(t) = M_0 \sin(\omega t)$) esetén:
 \begin{equation}
     \ddot{\varphi} + 2\zeta\omega_n\dot{\varphi} + \omega_n^2\varphi = f_0\omega_n^2 \sin(\omega t)
 \end{equation}
@@ -11,18 +11,16 @@ Ebből a teljes mozgástörvény (homogén + partikuláris megoldás):
     \varphi(t) = e^{-\zeta\omega_n t} \left( C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t) \right) + \Phi \sin(\omega t - \vartheta)
 \end{equation}
 
-Ahol a számított paraméterek (a 3. feladatrészből kapott $\omega_n$ és $\zeta$ felhasználásával):
 \begin{align}
-    \omega_d   & = \omega_n \sqrt{1 - \zeta^2} \approx \siunit{\omegadVal}{rad/s}                                                                      \\[1ex]
-    f_0        & = \frac{M_0}{\theta_A \cdot \omega_n^2} \approx \siunit{\fzeroVal}{rad}                                                               \\[1ex]
-    \lambda    & = \frac{\omega}{\omega_n} \approx \lamVal                                                                                             \\[1ex]
-    N(\lambda) & = \frac{1}{\sqrt{(1-\lambda^2)^2 + 4\zeta^2\lambda^2}} \approx \NlamVal                                                               \\[1ex]
-    \Phi       & = f_0 \cdot N(\lambda) \approx \siunit{\PhiAmp}{rad}                                                                                  \\[1ex]
-    \vartheta  & = \arctan\left(\frac{2\zeta\lambda}{1-\lambda^2}\right) \approx \siunit{\varthetaVal}{rad} \quad \text{(A síknegyed helyesbítésével)}
+    \omega_d   & = \omega_n \sqrt{1 - \zeta^2} \approx \siunit{\omegadVal}{rad/s}                                 \\[1ex]
+    f_0        & = \frac{M_0}{\theta_A \cdot \omega_n^2} \approx \siunit{\fzeroVal}{rad}                          \\[1ex]
+    \lambda    & = \frac{\omega}{\omega_n} \approx \lamVal                                                        \\[1ex]
+    N(\lambda) & = \frac{1}{\sqrt{(1-\lambda^2)^2 + 4\zeta^2\lambda^2}} \approx \NlamVal                          \\[1ex]
+    \Phi       & = f_0 \cdot N(\lambda) \approx \siunit{\PhiAmp}{rad}                                             \\[1ex]
+    \vartheta  & = \arctan\left(\frac{2\zeta\lambda}{1-\lambda^2}\right) \approx \siunit{\varthetaVal}{rad} \quad
 \end{align}
 
 \subsection{Kezdeti feltételek illesztése}
-A peremfeltételek behelyettesítése az 5. feladatrészből ($\varphi(0) = 0$ és $\dot{\varphi}(0) = \phiDotZero$ rad/s):
 \begin{align}
     \varphi(0) & = C_1 - \Phi \sin(\vartheta) = 0 \implies C_1 = \Phi \sin(\vartheta) \approx \siunit{\Cone}{rad}
 \end{align}
@@ -35,14 +33,14 @@ A sebességfüggvény deriválásával és behelyettesítésével:
 
 
 \newpage
-\subsection{Behelyettesítve a mozgástörvénybe:}
+\subsection{Végleges mozgástörvény}
 \begin{equation}
     \begin{split}
         \varphi(t) = e^{-\zetaVal \cdot \omeganVal \cdot t} \left( \Cone \cos(\omegadVal t) + \Ctwo \sin(\omegadVal t) \right) \\+ \PhiAmp \sin(\omegaEx t - \varthetaVal)
     \end{split}
 \end{equation}
 
-\subsection{A mozgásegyenlet grafikonon ábrázolva}
+\subsection{Ábrázolás}
 \begin{figure}[hbt!]
     \begin{center}
         \begin{tikzpicture}

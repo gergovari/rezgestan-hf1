@@ -13,32 +13,33 @@ Mivel a (2) tömegpont helyzeti energiája a zuhanás elején (vízszintes helyz
     C_2                       & = \sqrt{2 \cdot g \cdot l_3 \cos(30^\circ)} \approx \siunit{\Ctwo}{m/s}
 \end{align}
 
-Ezt levetítve az ütközési egyenesre (vízszintes normális), figyelembe véve, hogy a sebességvektor $30^\circ$-ot zár be a vízszintessel, és balra mutat:
+Ezt levetítve az ütközési egyenesre és figyelembe véve hogy a sebességvektor $30^\circ$-ot zár be a vízszintessel illetve balra mutat:
 \begin{align}
     C_{2n} & = -C_2 \cdot \cos(30^\circ) \approx \siunit{\Ctwon}{m/s}                   \\[1ex]
     C_{1n} & = \siunit{0}{m/s} \quad \text{(Az (1) lengőkar kezdetben nyugalomban van)}
 \end{align}
 
-\subsection{Redukált tömegek számítása}
+\subsection{Redukált tömegek}
 A tömegeket az ütközési pontba (D) és az ütközés irányára (vízszintes) redukáljuk:
 \begin{align}
     m_{T1} & = \frac{\theta_A}{(l_1 + l_2)^2} \approx \siunit{\mTone}{kg}                                                                                      \\[1ex]
     m_{T2} & = \frac{\theta_2}{(l_3 \cos(30^\circ))^2} = \frac{m \cdot l_3^2}{l_3^2 \cos^2(30^\circ)} = \frac{m}{\cos^2(30^\circ)} \approx \siunit{\mTtwo}{kg}
 \end{align}
 
-\subsection{Közös ütközés utáni sebesség (tökéletesen rugalmatlan eset)}
+\subsection{Közös ütközés utáni sebesség}
 \begin{equation}
     C_{sn} = \frac{m_{T1} \cdot C_{1n} + m_{T2} \cdot C_{2n}}{m_{T1} + m_{T2}} \approx \siunit{\Csn}{m/s}
 \end{equation}
 
-\subsection{Az ütközés utáni sebessége a lengőkarnak (1) a D pontban}
+\subsection{Az ütközés utáni sebessége a lengőkarnak}
 A Newton-féle ütközési törvényt és a megadott $e$ ütközési tényezőt használva:
 \begin{equation}
     C_{1n}' = C_{sn} - e(C_{1n} - C_{sn}) = C_{sn}(1 + e) \approx \siunit{\vOnenPrime}{m/s}
 \end{equation}
 
+\newpage
 \subsection{A rendszer kezdeti feltételei}
-Mivel az ütközés során a D pont balra mozdul el, a rögzített A pont körül a szerkezet az óramutató járásával megegyező irányba fordul el. A koordinátarendszerünk alapján (ahol a C pont lefelé mozgása jelenti a pozitív $\varphi$-t, tehát az óramutató járásával ellentétes irány a pozitív), ez \textbf{negatív} szögsebességet eredményez.
+Mivel az ütközés során a D pont balra mozdul el, a rögzített A pont körül a szerkezet az óramutató járásával megegyező irányba fordul el. A koordinátarendszerünk alapján (ahol a C pont lefelé mozgása jelenti a pozitív $\varphi$-t, tehát az óramutató járásával ellentétes irány a pozitív), ez negatív szögsebességet eredményez.
 \begin{equation}
     \dot{\varphi}(0) = \frac{C_{1n}'}{l_1 + l_2} \approx \siunit{\phiDotZero}{rad/s}
 \end{equation}
